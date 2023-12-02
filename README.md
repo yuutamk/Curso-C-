@@ -234,3 +234,93 @@ Hola mundo :D
 ![resultado](./src/resultado-programa1.png)
 
 Este es el resultado de nuestro primer programa en C++, que muestra el mensaje "Hola mundo :D" en la pantalla, dos veces, una con endl y otra con \n. Con esto, hemos aprendido los conceptos básicos de C++.
+
+## ¿Qué son los operadores en C++?
+
+En C++, un operador es simplemente un signo para una operación. Puede referirse a uno, pero sobre todo a varios operandos. Como resultado, se obtiene un nuevo valor en la mayoría de los casos. Los operadores son fundamentales para la creación de programas eficientes y efectivos.
+
+## Operadores aritméticos
+
+Los operadores aritméticos básicos son:
+
+- **+**: suma
+- **-**: resta
+- **\***: multiplicación
+- **/**: división
+- **%**: módulo (el resto de una división)
+
+Aquí hay algunos ejemplos de cómo se utilizan los operadores aritméticos:
+
+```c++
+int x = 5;
+int y = 3;
+int z = x + y; // z es igual a 8
+int w = x - y; // w es igual a 2
+int a = x * y; // a es igual a 15
+int b = x / y; // b es igual a 1
+int c = x % y; // c es igual a 2
+```
+
+## Operadores de asignación
+
+Los operadores de asignación básicos son:
+
+- **=**: asignación simple
+- **+=**: asignación combinada
+- **-=**: asignación combinada
+- **\*=**: asignación combinada
+- **/=**: asignación combinada
+- **%=**: asignación combinada
+
+Aquí hay algunos ejemplos de cómo se utilizan los operadores de asignación:
+
+```c++
+int x = 5;
+x += 3; // x es igual a 8
+x -= 3; // x es igual a 5
+x *= 3; // x es igual a 15
+x /= 3; // x es igual a 5
+x %= 3; // x es igual a 2
+```
+
+## Operadores de comparación
+
+Los operadores de comparación básicos son:
+
+- **==**: igualdad
+- **!=**: desigualdad
+- **>**: mayor que
+- **<**: menor que
+- **>=**: mayor o igual que
+- **<=**: menor o igual que
+
+Aquí hay algunos ejemplos de cómo se utilizan los operadores de comparación:
+
+```c++
+int x = 5;
+int y = 3;
+bool a = x == y; // a es igual a false
+bool b = x != y; // b es igual a true
+bool c = x > y; // c es igual a true
+bool d = x < y; // d es igual a false
+bool e = x >= y; // e es igual a true
+bool f = x <= y; // f es igual a false
+```
+
+## Operadores lógicos
+
+Los operadores lógicos básicos son:
+
+- **&&**: AND lógico
+- **||**: OR lógico
+- **!**: NOT lógico
+
+Aquí hay algunos ejemplos de cómo se utilizan los operadores lógicos:
+
+```c++
+int x = 5;
+int y = 3;
+bool a = (x > 3) && (y < 5); // a es igual a true
+bool b = (x > 3) || (y > 5); // b es igual a true
+bool c = !(x > 3); // c es igual a false
+```
