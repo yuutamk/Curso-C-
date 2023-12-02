@@ -111,4 +111,4 @@ La disyunción de logico y true es: 1
 
 ```
 
-El codigo completo de como deberia quedar lo encuentras de igual manera en la carpeta [Practics](../Practics)
+El codigo completo de como deberia quedar lo encuentras de igual manera en la carpeta [Practics](../Practics) llamada [Tablas_Basicos.cpp](../Practics/Tablas_Basicos.cpp)
