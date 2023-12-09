@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/xampp/htdocs/Yuuta/Cursos/Cpp/dev/src",
-      "program": "c:/xampp/htdocs/Yuuta/Cursos/Cpp/dev/src/build/Debug/outDebug",
+      "cwd": "c:/xampp/htdocs/Yuuta/Cursos/Cpp/Practics",
+      "program": "c:/xampp/htdocs/Yuuta/Cursos/Cpp/Practics/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
