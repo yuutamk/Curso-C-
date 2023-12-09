@@ -235,6 +235,124 @@ Hola mundo :D
 
 Este es el resultado de nuestro primer programa en C++, que muestra el mensaje "Hola mundo :D" en la pantalla, dos veces, una con endl y otra con \n. Con esto, hemos aprendido los conceptos básicos de C++.
 
+## Variables en C++: ¿Qué son, cómo se usan y cómo se gestionan?
+
+Las variables son uno de los conceptos más fundamentales de la programación, y también uno de los más útiles. Una variable es un espacio de memoria que se reserva para almacenar un valor, que puede cambiar durante la ejecución del programa. Las variables nos permiten guardar y manipular datos, como números, caracteres, cadenas, booleanos, etc. Las variables también tienen un nombre, que es la forma de identificarlas y acceder a ellas en el código.
+
+En C++, las variables se pueden declarar de dos formas: estática o dinámica. La declaración estática significa que el tamaño y la ubicación de la memoria de la variable se determinan en tiempo de compilación, y no se pueden modificar en tiempo de ejecución. La declaración dinámica significa que el tamaño y la ubicación de la memoria de la variable se determinan en tiempo de ejecución, y se pueden modificar según las necesidades del programa. Veamos las diferencias y las ventajas de cada forma.
+
+## Declaración estática de variables
+
+La declaración estática de variables se hace mediante la especificación del tipo de dato y el nombre de la variable, opcionalmente seguido de un valor inicial. Por ejemplo:
+
+```cpp
+int x; // declara una variable de tipo entero llamada x, sin asignarle un valor
+char c = 'a'; // declara una variable de tipo carácter llamada c, y le asigna el valor 'a'
+```
+
+La declaración estática de variables tiene la ventaja de que es más rápida y eficiente, ya que el compilador sabe de antemano cuánta memoria necesita reservar y dónde ubicarla. Además, el compilador puede hacer comprobaciones de tipos y errores en tiempo de compilación, lo que evita posibles fallos en tiempo de ejecución. Sin embargo, la declaración estática de variables también tiene la desventaja de que es más rígida y limitada, ya que el tamaño y la ubicación de la memoria de la variable no se pueden cambiar una vez que se ha declarado. Esto puede provocar problemas de desperdicio o escasez de memoria, si el tamaño de la variable es mayor o menor que el necesario.
+
+## Declaración dinámica de variables
+
+La declaración dinámica de variables se hace mediante el uso de los operadores `new` y `delete`, que permiten asignar y liberar memoria en tiempo de ejecución. El operador `new` reserva una cantidad de memoria suficiente para almacenar un valor de un tipo determinado, y devuelve un puntero a esa zona de memoria. El operador `delete` libera la memoria que ha sido asignada previamente por el operador `new`, y evita que el puntero apunte a una zona de memoria inválida. Por ejemplo:
+
+```cpp
+int* p = new int; // declara un puntero a entero llamado p, y le asigna una zona de memoria para un entero
+*p = 10; // accede y modifica el valor de la zona de memoria apuntada por p
+delete p; // libera la memoria asignada por el operador new, y evita que p apunte a una zona de memoria inválida
+```
+
+La declaración dinámica de variables tiene la ventaja de que es más flexible y adaptable, ya que el tamaño y la ubicación de la memoria de la variable se pueden cambiar según las necesidades del programa. Esto permite crear estructuras de datos dinámicas, como arreglos, listas, árboles, etc. Sin embargo, la declaración dinámica de variables también tiene la desventaja de que es más lenta y compleja, ya que el programador es responsable de asignar y liberar la memoria correctamente, y de evitar posibles errores, como fugas de memoria, corrupción de datos, o acceso a zonas de memoria no válidas.
+
+## Tipos de datos y tamaño de la memoria
+
+Los tipos de datos son una forma de clasificar y representar la información que se almacena y se procesa en la computadora. Los tipos de datos básicos son los números enteros, los números reales, los caracteres, los booleanos, etc. Cada tipo de dato tiene un tamaño y un rango determinados, que dependen de la arquitectura y el compilador de la máquina. El tamaño de un tipo de dato indica cuántos bytes ocupa en la memoria, y el rango indica los valores mínimos y máximos que puede representar. Por ejemplo, un número entero puede ocupar 4 bytes (32 bits) y tener un rango de -2^31 a 2^31-1.
+
+Los tipos de datos son importantes porque determinan cómo se almacena y se manipula la información en la memoria de la computadora. El tamaño de un tipo de dato afecta al espacio de memoria que se necesita reservar para una variable, y al rendimiento del programa. El rango de un tipo de dato afecta a la precisión y la exactitud de la información que se puede representar y procesar. Por eso, es importante elegir el tipo de dato adecuado para cada variable, según el tipo y el tamaño de la información que se quiere almacenar y manipular.
+
+En C++, los tipos de datos básicos se pueden clasificar en los siguientes grupos:
+
+- Tipos enteros: son los que representan números enteros, es decir, sin parte decimal. Se pueden dividir en dos categorías: con signo y sin signo. Los tipos enteros con signo pueden representar números positivos y negativos, mientras que los tipos enteros sin signo solo pueden representar números positivos. Los tipos enteros más comunes son `char`, `short`, `int`, `long` y `long long`.
+- Tipos reales: son los que representan números reales, es decir, con parte decimal. Se pueden dividir en dos categorías: de precisión simple y de precisión doble. Los tipos reales de precisión simple pueden representar números con menos decimales, pero ocupan menos memoria. Los tipos reales de precisión doble pueden representar números con más decimales, pero ocupan más memoria. Los tipos reales más comunes son `float` y `double`.
+- Tipo carácter: es el que representa un carácter, es decir, un símbolo alfanumérico o especial. El tipo carácter más común es `char`, que puede representar un carácter del conjunto ASCII, que tiene 128 símbolos. También existe el tipo `wchar_t`, que puede representar un carácter del conjunto Unicode, que tiene más de 100000 símbolos.
+- Tipo booleano: es el que representa un valor lógico, es decir, verdadero o falso. El tipo booleano más común es `bool`, que puede representar los valores `true` o `false`.
+
+En la siguiente tabla se muestra el tamaño y el rango de los tipos de datos básicos en C++, asumiendo que se usa una arquitectura de 32 bits y un compilador estándar:
+
+| Tipo de dato | Tamaño (bytes) | Rango |
+|--------------|----------------|-------|
+| char         | 1              | -128 a 127 |
+| unsigned char | 1             | 0 a 255 |
+| short        | 2              | -32768 a 32767 |
+| unsigned short | 2            | 0 a 65535 |
+| int          | 4              | -2147483648 a 2147483647 |
+| unsigned int | 4              | 0 a 4294967295 |
+| long         | 4              | -2147483648 a 2147483647 |
+| unsigned long | 4             | 0 a 4294967295 |
+| long long    | 8              | -9223372036854775808 a 9223372036854775807 |
+| unsigned long long | 8        | 0 a 18446744073709551615 |
+| float        | 4              | ±1.17549435e-38 a ±3.40282347e+38 |
+| double       | 8              | ±2.2250738585072014e-308 a ±1.7976931348623157e+308 |
+| wchar_t      | 2 o 4          | depende del compilador |
+| bool         | 1              | true o false |
+
+
+## ¿Qué son las variables?
+
+Una variable es un espacio de memoria que tiene un nombre y un tipo, y que puede almacenar un valor. El nombre de la variable nos permite identificarla y acceder a ella, y el tipo de la variable nos indica qué clase de datos puede almacenar y cómo se interpretan. Por ejemplo, una variable de tipo `int` puede almacenar números enteros, y una variable de tipo `string` puede almacenar cadenas de texto.
+
+Para declarar una variable en C++, debemos escribir el tipo de la variable seguido del nombre de la variable, y opcionalmente podemos asignarle un valor inicial. Por ejemplo:
+
+```c++
+int edad = 21; // declara una variable de tipo int llamada edad y le asigna el valor 21
+string nombre = "Juan"; // declara una variable de tipo string llamada nombre y le asigna el valor "Juan"
+```
+
+Para usar una variable en nuestro código, podemos referirnos a ella por su nombre. Por ejemplo, podemos imprimir el valor de una variable en la consola usando la función `cout`:
+
+```c++
+cout << "Mi nombre es " << nombre << " y tengo " << edad << " años." << endl;
+// imprime en la consola: Mi nombre es Juan y tengo 21 años.
+```
+
+También podemos modificar el valor de una variable usando el operador de asignación `=`:
+
+```c++
+edad = 22; // cambia el valor de la variable edad a 22
+nombre = "Ana"; // cambia el valor de la variable nombre a "Ana"
+```
+
+## ¿Qué son las constantes?
+
+Una constante es un tipo especial de variable que no puede cambiar su valor una vez que se le asigna. Esto nos permite definir valores fijos que no queremos que se modifiquen durante la ejecución del programa. Por ejemplo, podemos definir una constante para representar el número pi, que siempre tiene el mismo valor.
+
+Para declarar una constante en C++, debemos usar la palabra clave `const` antes del tipo de la variable, y debemos asignarle un valor inicial. Por ejemplo:
+
+```c++
+const double pi = 3.14159; // declara una constante de tipo double llamada pi y le asigna el valor 3.14159
+```
+
+Para usar una constante en nuestro código, podemos referirnos a ella por su nombre, igual que con una variable. Por ejemplo, podemos calcular el área de un círculo usando la fórmula `area = pi * radio * radio`:
+
+```c++
+double radio = 5.0; // declara una variable de tipo double llamada radio y le asigna el valor 5.0
+double area = pi * radio * radio; // declara una variable de tipo double llamada area y le asigna el valor del área del círculo
+cout << "El área del círculo es " << area << endl;
+// imprime en la consola: El área del círculo es 78.5398
+```
+
+Sin embargo, no podemos modificar el valor de una constante usando el operador de asignación `=`, ya que esto generaría un error de compilación. Por ejemplo, si intentamos hacer lo siguiente:
+
+```c++
+pi = 3.14; // intenta cambiar el valor de la constante pi a 3.14
+```
+
+Obtendríamos el siguiente mensaje de error:
+
+```c++
+error: assignment of read-only variable 'pi'
+```
+
 ## ¿Qué son los operadores en C++?
 
 En C++, un operador es simplemente un signo para una operación. Puede referirse a uno, pero sobre todo a varios operandos. Como resultado, se obtiene un nuevo valor en la mayoría de los casos. Los operadores son fundamentales para la creación de programas eficientes y efectivos.
@@ -323,4 +441,76 @@ int y = 3;
 bool a = (x > 3) && (y < 5); // a es igual a true
 bool b = (x > 3) || (y > 5); // b es igual a true
 bool c = !(x > 3); // c es igual a false
+```
+
+## ¿Qué son los arrays?
+
+Un array es una colección de valores del mismo tipo que se almacenan de forma contigua en la memoria. Cada valor del array se llama elemento, y cada elemento tiene una posición o índice que indica su lugar en el array. El primer elemento del array tiene el índice 0, el segundo tiene el índice 1, y así sucesivamente. El último elemento del array tiene el índice igual al tamaño del array menos uno.
+
+Para declarar un array en C++, debemos escribir el tipo de los elementos seguido del nombre del array y entre corchetes el tamaño del array. Por ejemplo:
+
+```c++
+int numeros[5]; // declara un array de tipo int llamado numeros y de tamaño 5
+```
+
+Para inicializar un array en C++, podemos asignarle los valores de los elementos entre llaves y separados por comas. Por ejemplo:
+
+```c++
+int numeros[5] = {10, 20, 30, 40, 50}; // declara e inicializa un array de tipo int llamado numeros y de tamaño 5 con los valores 10, 20, 30, 40 y 50
+```
+
+También podemos omitir el tamaño del array y dejar que el compilador lo deduzca a partir del número de elementos que le asignamos. Por ejemplo:
+
+```c++
+int numeros[] = {10, 20, 30, 40, 50}; // declara e inicializa un array de tipo int llamado numeros y de tamaño 5 con los valores 10, 20, 30, 40 y 50
+```
+
+## ¿Cómo acceder y modificar los elementos de un array?
+
+Para acceder a un elemento de un array, debemos usar el nombre del array seguido del índice del elemento entre corchetes. Por ejemplo, para acceder al primer elemento del array numeros, podemos escribir:
+
+```c++
+cout << numeros[0] << endl; // imprime en la consola el valor 10
+```
+
+Para modificar el valor de un elemento de un array, debemos usar el operador de asignación `=` con el nombre del array seguido del índice del elemento entre corchetes. Por ejemplo, para cambiar el valor del primer elemento del array numeros a 100, podemos escribir:
+
+```c++
+numeros[0] = 100; // cambia el valor del primer elemento del array numeros a 100
+```
+
+## ¿Cómo usar los métodos y funciones para trabajar con arrays?
+
+C++ nos ofrece algunos métodos y funciones que nos facilitan el trabajo con arrays. Algunos de los más útiles son:
+
+- El método `size()` nos devuelve el tamaño de un array. Por ejemplo:
+
+```c++
+cout << numeros.size() << endl; // imprime en la consola el valor 5
+```
+
+- La función `sort()` nos permite ordenar los elementos de un array de forma ascendente o descendente. Para usar esta función, debemos incluir la librería `<algorithm>`. Por ejemplo:
+
+```c++
+#include <algorithm> // incluye la librería <algorithm>
+sort(numeros, numeros + numeros.size()); // ordena los elementos del array numeros de forma ascendente
+cout << numeros[0] << " " << numeros[4] << endl; // imprime en la consola los valores 10 y 100
+sort(numeros, numeros + numeros.size(), greater<int>()); // ordena los elementos del array numeros de forma descendente
+cout << numeros[0] << " " << numeros[4] << endl; // imprime en la consola los valores 100 y 10
+```
+
+- La función `reverse()` nos permite invertir el orden de los elementos de un array. Para usar esta función, debemos incluir la librería `<algorithm>`. Por ejemplo:
+
+```c++
+#include <algorithm> // incluye la librería <algorithm>
+reverse(numeros, numeros + numeros.size()); // invierte el orden de los elementos del array numeros
+cout << numeros[0] << " " << numeros[4] << endl; // imprime en la consola los valores 50 y 100
+```
+
+- La función `fill()` nos permite asignar el mismo valor a todos los elementos de un array. Para usar esta función, debemos incluir la librería `<algorithm>`. Por ejemplo:
+
+```c++
+#include <algorithm> // incluye la librería <algorithm>
+fill(numeros, numeros + numeros.size(), 0); // asigna el valor 0 a todos los elementos del array numeros
+cout << numeros[0] << " " << numeros[4] << endl; // imprime en la consola los valores 0 y 0
 ```
