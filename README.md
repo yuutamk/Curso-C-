@@ -514,3 +514,351 @@ cout << numeros[0] << " " << numeros[4] << endl; // imprime en la consola los va
 fill(numeros, numeros + numeros.size(), 0); // asigna el valor 0 a todos los elementos del array numeros
 cout << numeros[0] << " " << numeros[4] << endl; // imprime en la consola los valores 0 y 0
 ```
+
+## Estructuras de control en C++
+
+Las estructuras de control son elementos del lenguaje de programación que nos permiten modificar el flujo de ejecución de un programa, es decir, el orden en el que se ejecutan las instrucciones.
+
+## Estructura secuencial
+
+La estructura secuencial es la más simple y básica de todas. Consiste en una serie de instrucciones que se ejecutan una tras otra, en el orden en el que aparecen en el código. Cada instrucción debe terminar con un punto y coma (;) para indicar el final de la misma. Por ejemplo:
+
+```c++
+#include <iostream>
+using namespace std;
+
+int main() {
+  cout << "Hola, mundo!" << endl; // Imprime un mensaje en la pantalla
+  int x = 5; // Declara una variable entera y le asigna un valor
+  x = x + 2; // Modifica el valor de la variable sumándole 2
+  cout << "El valor de x es " << x << endl; // Imprime el valor de la variable
+  return 0; // Termina la ejecución del programa
+}
+```
+
+En este ejemplo, el programa ejecuta las instrucciones de forma secuencial, desde la primera hasta la última. El resultado sería:
+
+```
+Hola, mundo!
+El valor de x es 7
+```
+
+## Estructura condicional
+
+La estructura condicional nos permite elegir entre dos o más opciones en función del valor de una expresión lógica o booleana, que puede ser verdadera (true) o falsa (false). En C++, existen dos tipos de estructuras condicionales: la instrucción if y la instrucción switch.
+
+### Instrucción if
+
+La instrucción if nos permite ejecutar una o más instrucciones si se cumple una condición, y opcionalmente, ejecutar otras instrucciones si no se cumple. La sintaxis general es la siguiente:
+
+```c++
+if (condicion) {
+  // Instrucciones a ejecutar si la condicion es verdadera
+}
+else {
+  // Instrucciones a ejecutar si la condicion es falsa
+}
+```
+
+La palabra clave else es opcional, y se puede omitir si no queremos hacer nada en caso de que la condición sea falsa. También se pueden omitir las llaves ({}) si solo hay una instrucción dentro del bloque, pero se recomienda usarlas para evitar confusiones. Por ejemplo:
+
+```c++
+#include <iostream>
+using namespace std;
+
+int main() {
+  int edad;
+  cout << "Introduce tu edad: ";
+  cin >> edad; // Lee un valor entero desde el teclado
+  if (edad >= 18) {
+    cout << "Eres mayor de edad" << endl;
+  }
+  else {
+    cout << "Eres menor de edad" << endl;
+  }
+  return 0;
+}
+```
+
+En este ejemplo, el programa lee la edad del usuario y comprueba si es mayor o menor de 18 años, usando el operador relacional >= (mayor o igual que). El resultado dependerá del valor introducido por el usuario. Por ejemplo, si introduce 20, el resultado sería:
+
+```
+Introduce tu edad: 20
+Eres mayor de edad
+```
+
+Si introduce 15, el resultado sería:
+
+```
+Introduce tu edad: 15
+Eres menor de edad
+```
+
+La instrucción if se puede anidar dentro de otra instrucción if, para comprobar varias condiciones de forma jerárquica. Por ejemplo:
+
+```c++
+#include <iostream>
+using namespace std;
+
+int main() {
+  int nota;
+  cout << "Introduce tu calificación: ";
+  cin >> nota; // Lee un valor entero desde el teclado
+  if (nota >= 0 && nota <= 10) { // Comprueba que la nota sea válida, usando el operador lógico && (y)
+    if (nota >= 5) { // Comprueba que la nota sea aprobado
+      cout << "Has aprobado" << endl;
+      if (nota == 10) { // Comprueba que la nota sea sobresaliente
+        cout << "Bien hecho, tienes un 10" << endl;
+      }
+    }
+    else { // Si la nota es menor que 5
+      cout << "Has reprobado" << endl;
+    }
+  }
+  else { // Si la nota no es válida
+    cout << "Calificación incorrecta" << endl;
+  }
+  return 0;
+}
+```
+
+En este ejemplo, el programa lee la nota del usuario y muestra un mensaje según el rango en el que se encuentre. El resultado dependerá del valor introducido por el usuario. Por ejemplo, si introduce 8, el resultado sería:
+
+```
+Introduce tu nota: 8
+Has aprobado
+```
+
+Si introduce 10, el resultado sería:
+
+```
+Introduce tu nota: 10
+Has aprobado
+Bien hecho, tienes un 10
+```
+
+Si introduce 4, el resultado sería:
+
+```
+Introduce tu nota: 4
+Has reprobado
+```
+
+Si introduce 11, el resultado sería:
+
+```
+Introduce tu nota: 11
+Nota incorrecta
+```
+
+También se puede usar la palabra clave else if para simplificar la escritura de varios if anidados, cuando solo queremos ejecutar una opción entre varias. Por ejemplo:
+
+```c++
+#include <iostream>
+using namespace std;
+
+int main() {
+  int dia;
+  cout << "Introduce un número del 1 al 7: ";
+  cin >> dia; // Lee un valor entero desde el teclado
+  if (dia == 1) {
+    cout << "Lunes" << endl;
+  }
+  else if (dia == 2) {
+    cout << "Martes" << endl;
+  }
+  else if (dia == 3) {
+    cout << "Miércoles" << endl;
+  }
+  else if (dia == 4) {
+    cout << "Jueves" << endl;
+  }
+  else if (dia == 5) {
+    cout << "Viernes" << endl;
+  }
+  else if (dia == 6) {
+    cout << "Sábado" << endl;
+  }
+  else if (dia == 7) {
+    cout << "Domingo" << endl;
+  }
+  else {
+    cout << "Número incorrecto" << endl;
+  }
+  return 0;
+}
+```
+
+En este ejemplo, el programa lee un número del 1 al 7 y muestra el nombre del día de la semana correspondiente, usando el operador de igualdad ==. El resultado dependerá del valor introducido por el usuario. Por ejemplo, si introduce 3, el resultado sería:
+
+```
+Introduce un número del 1 al 7: 3
+Miércoles
+```
+
+Si introduce 8, el resultado sería:
+
+```
+Introduce un número del 1 al 7: 8
+Número incorrecto
+```
+
+### Instrucción switch
+
+La instrucción switch nos permite ejecutar una o más instrucciones entre varias opciones, en función del valor de una expresión entera o de tipo char. La sintaxis general es la siguiente:
+
+```c++
+switch (expresion) {
+  case valor1:
+    // Instrucciones a ejecutar si la expresion es igual a valor1
+    break;
+  case valor2:
+    // Instrucciones a ejecutar si la expresion es igual a valor2
+    break;
+  ...
+  default:
+    // Instrucciones a ejecutar si la expresion no es igual a ninguno de los valores anteriores
+    break;
+}
+```
+
+La palabra clave case indica el valor que puede tomar la expresión para ejecutar el bloque de instrucciones correspondiente. La palabra clave break indica el final del bloque y hace que se salga de la instrucción switch. La palabra clave default es opcional, y se usa para indicar el bloque de instrucciones que se ejecuta si la expresión no coincide con ninguno de los valores anteriores. Por ejemplo:
+
+```c++
+#include <iostream>
+using namespace std;
+
+int main() {
+  char letra;
+  cout << "Introduce una letra: ";
+  cin >> letra; // Lee un valor de tipo char desde el teclado
+  switch (letra) {
+    case 'a':
+    case 'e':
+    case 'i':
+    case 'o':
+    case 'u':
+      cout << "Es una vocal" << endl;
+      break;
+    case 'b':
+    case 'c':
+    case 'd':
+    case 'f':
+    case 'g':
+      cout << "Es una consonante" << endl;
+      break;
+    default:
+      cout << "No es una letra" << endl;
+      break;
+  }
+  return 0;
+}
+```
+
+En este ejemplo, el programa lee una letra y muestra si es una vocal, una consonante o no es una letra, usando la instrucción switch. El resultado dependerá de la letra que ponga el usuario.
+
+## Bucle while
+
+El bucle while nos permite ejecutar un bloque de código de forma repetida mientras se cumpla una condición. Esto es muy útil cuando no sabemos de antemano cuántas veces queremos repetir el código, o cuando queremos que el código dependa de algún evento externo.
+
+## Sintaxis del bucle while
+
+La sintaxis del bucle while es la siguiente:
+
+```cpp
+while (condicion) {
+  // bloque de código a ejecutar
+}
+```
+
+La condición es una expresión lógica que puede ser verdadera o falsa. El bloque de código es el conjunto de sentencias que queremos ejecutar mientras la condición sea verdadera. El bloque de código puede tener una o más sentencias, y debe estar encerrado entre llaves.
+
+El funcionamiento del bucle while es el siguiente:
+
+- Se evalúa la condición. Si es verdadera, se ejecuta el bloque de código. Si es falsa, se termina el bucle y se continúa con el resto del programa.
+- Después de ejecutar el bloque de código, se vuelve a evaluar la condición. Si sigue siendo verdadera, se repite el bloque de código. Si se ha vuelto falsa, se termina el bucle y se continúa con el resto del programa.
+- Este proceso se repite hasta que la condición sea falsa.
+
+
+### Ejemplo 1: Mostrar los números del 1 al 10
+
+Supongamos que queremos mostrar los números del 1 al 10 en la pantalla. Podríamos usar 10 sentencias de impresión, una para cada número, pero eso sería muy tedioso y poco eficiente. Una forma mejor de hacerlo es usar un bucle while. Para ello, necesitamos una variable que actúe como contador, y que vaya incrementando su valor en cada iteración del bucle. La condición del bucle será que el contador sea menor o igual que 10. El bloque de código será una sentencia de impresión del contador, seguida de una sentencia de incremento del contador. El código quedaría así:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+  int contador = 1; // inicializamos el contador con el valor 1
+  while (contador <= 10) { // mientras el contador sea menor o igual que 10
+    cout << contador << " "; // mostramos el valor del contador
+    contador++; // incrementamos el valor del contador en 1
+  }
+  return 0;
+}
+```
+
+La salida de este programa sería:
+
+```
+1 2 3 4 5 6 7 8 9 10
+```
+
+Veamos cómo funciona el programa paso a paso:
+
+- Se inicializa la variable contador con el valor 1.
+- Se evalúa la condición. 1 <= 10 es verdadero, por lo que se entra en el bucle.
+- Se muestra el valor de contador, que es 1, y se incrementa su valor en 1. Ahora contador vale 2.
+- Se vuelve a evaluar la condición. 2 <= 10 es verdadero, por lo que se repite el bucle.
+- Se muestra el valor de contador, que es 2, y se incrementa su valor en 1. Ahora contador vale 3.
+- Se vuelve a evaluar la condición. 3 <= 10 es verdadero, por lo que se repite el bucle.
+- Así sucesivamente hasta que contador vale 10. Se muestra el valor de contador, que es 10, y se incrementa su valor en 1. Ahora contador vale 11.
+- Se vuelve a evaluar la condición. 11 <= 10 es falso, por lo que se termina el bucle y se continúa con el resto del programa.
+
+### Ejemplo 2: Calcular la suma de los números positivos introducidos por el usuario
+
+Supongamos que queremos calcular la suma de los números positivos que el usuario introduce por teclado. El programa terminará cuando el usuario introduzca un número negativo, que no se sumará al total. Para hacer este programa, necesitamos una variable que almacene la suma, y otra variable que almacene el número introducido por el usuario. La condición del bucle será que el número sea mayor o igual que cero. El bloque de código será una sentencia de lectura del número, seguida de una sentencia de suma del número a la variable suma. El código quedaría así:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+  int suma = 0; // inicializamos la suma con el valor 0
+  int numero; // declaramos la variable numero
+  cout << "Introduce un numero: "; // pedimos al usuario que introduzca un numero
+  cin >> numero; // leemos el numero
+  while (numero >= 0) { // mientras el numero sea mayor o igual que cero
+    suma += numero; // sumamos el numero a la suma
+    cout << "Introduce un numero: "; // pedimos al usuario que introduzca otro numero
+    cin >> numero; // leemos el numero
+  }
+  cout << "La suma es " << suma << endl; // mostramos la suma
+  return 0;
+}
+```
+
+La salida de este programa dependerá de los números que introduzca el usuario. Por ejemplo, si el usuario introduce los números 6, 12, 7, 0 y -2, la salida sería:
+
+```
+Introduce un numero: 6
+Introduce un numero: 12
+Introduce un numero: 7
+Introduce un numero: 0
+Introduce un numero: -2
+La suma es 25
+```
+
+Veamos cómo funciona el programa paso a paso:
+
+- Se inicializa la variable suma con el valor 0.
+- Se declara la variable numero.
+- Se pide al usuario que introduzca un número y se lee el número. Supongamos que el usuario introduce 6.
+- Se evalúa la condición. 6 >= 0 es verdadero, por lo que se entra en el bucle.
+- Se suma el número a la suma. Ahora suma vale 6.
+- Se pide al usuario que introduzca otro número y se lee el número. Supongamos que el usuario introduce 12.
+- Se vuelve a evaluar la condición. 12 >= 0 es verdadero, por lo que se repite el bucle.
+- Se suma el número a la suma. Ahora suma vale 18.
+- Así sucesivamente hasta que el usuario introduce -2.
+- Se vuelve a evaluar la condición. -2 >= 0 es falso, por lo que se termina el bucle y se continúa con el resto del programa.
+- Se muestra el valor de suma, que es 25.
