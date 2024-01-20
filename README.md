@@ -862,3 +862,467 @@ Veamos cómo funciona el programa paso a paso:
 - Así sucesivamente hasta que el usuario introduce -2.
 - Se vuelve a evaluar la condición. -2 >= 0 es falso, por lo que se termina el bucle y se continúa con el resto del programa.
 - Se muestra el valor de suma, que es 25.
+
+## Cadenas
+
+### Concatenar cadenas
+
+La función `strcat` se usa para concatenar, es decir, unir dos cadenas. La sintaxis es:
+
+```c++
+char* strcat (char* destino, const char* origen);
+```
+
+Esta función añade la cadena `origen` al final de la cadena `destino`, y devuelve un puntero a la cadena `destino`. Por ejemplo:
+
+```c++
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main() {
+  char saludo[20] = "Hola";
+  char nombre[10] = "Juan";
+  strcat(saludo, " ");
+  strcat(saludo, nombre);
+  cout << saludo << endl; // imprime "Hola Juan"
+  return 0;
+}
+```
+
+### Comparar cadenas
+
+La función `strcmp` se usa para comparar dos cadenas lexicográficamente, es decir, según el orden alfabético. La sintaxis es:
+
+```c++
+int strcmp (const char* cadena1, const char* cadena2);
+```
+
+Esta función devuelve un valor entero que indica la relación entre las cadenas. Si son iguales, devuelve 0. Si `cadena1` es menor que `cadena2`, devuelve un valor negativo. Si `cadena1` es mayor que `cadena2`, devuelve un valor positivo. Por ejemplo:
+
+```c++
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main() {
+  char cadena1[10] = "azul";
+  char cadena2[10] = "rojo";
+  int resultado = strcmp(cadena1, cadena2);
+  if (resultado == 0) {
+    cout << "Las cadenas son iguales" << endl;
+  } else if (resultado < 0) {
+    cout << "La cadena1 es menor que la cadena2" << endl;
+  } else {
+    cout << "La cadena1 es mayor que la cadena2" << endl;
+  }
+  return 0;
+}
+```
+
+### Copiar cadenas
+
+La función `strcpy` se usa para copiar el contenido de una cadena a otra. La sintaxis es:
+
+```c++
+char* strcpy (char* destino, const char* origen);
+```
+
+Esta función copia la cadena `origen` en la cadena `destino`, incluyendo el carácter nulo al final, y devuelve un puntero a la cadena `destino`. Por ejemplo:
+
+```c++
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main() {
+  char cadena1[10] = "hola";
+  char cadena2[10];
+  strcpy(cadena2, cadena1);
+  cout << cadena2 << endl; // imprime "hola"
+  return 0;
+}
+```
+
+### Intercambiar cadenas
+
+La función `swap` se usa para intercambiar el valor de dos cadenas. La sintaxis es:
+
+```c++
+void swap (string& cadena1, string& cadena2);
+```
+
+Esta función intercambia el contenido de las cadenas `cadena1` y `cadena2`, sin crear copias temporales. Por ejemplo:
+
+```c++
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+  string cadena1 = "hola";
+  string cadena2 = "adios";
+  swap(cadena1, cadena2);
+  cout << cadena1 << " " << cadena2 << endl; // imprime "adios hola"
+  return 0;
+}
+```
+
+### Calcular la longitud de una cadena
+
+La función `strlen` se usa para calcular la longitud de una cadena, es decir, el número de caracteres que tiene. La sintaxis es:
+
+```c++
+size_t strlen (const char* cadena);
+```
+
+Esta función devuelve el número de caracteres de la cadena `cadena`, sin contar el carácter nulo al final. Por ejemplo:
+
+```c++
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main() {
+  char cadena[10] = "hola";
+  size_t longitud = strlen(cadena);
+  cout << longitud << endl; // imprime 4
+  return 0;
+}
+```
+
+Estas son algunas de las funciones más útiles para trabajar con cadenas en C++. Hay muchas más que puedes consultar en la [documentación oficial](https://learn.microsoft.com/es-es/cpp/cpp/string-and-character-literals-cpp?view=msvc-170)
+
+## ¿Qué es el método burbuja y cómo usarlo en C++?
+
+El método burbuja es un algoritmo de ordenamiento que consiste en comparar pares de elementos adyacentes de un arreglo y cambiarlos de posición si están desordenados. De esta forma, los elementos más pequeños se van desplazando hacia el principio del arreglo, mientras que los más grandes se van quedando al final. El nombre de burbuja se debe a que los elementos más pequeños parecen subir como burbujas en el agua.
+
+El método burbuja es uno de los algoritmos de ordenamiento más sencillos de implementar, pero también uno de los más lentos, ya que tiene una complejidad temporal de O(n^2), donde n es el número de elementos del arreglo. Esto significa que, en el peor caso, se requieren n^2 comparaciones e intercambios para ordenar el arreglo. Por esta razón, el método burbuja no es recomendable para ordenar arreglos muy grandes o que requieran una alta eficiencia.
+
+## ¿Cómo implementar el método burbuja en C++?
+
+Para implementar el método burbuja en C++, se puede usar un ciclo for anidado que recorra el arreglo desde el principio hasta el final, comparando cada elemento con el siguiente y realizando el intercambio si es necesario. Además, se puede usar una variable booleana que indique si se ha realizado algún cambio en el arreglo durante una iteración. Si no se ha realizado ningún cambio, significa que el arreglo ya está ordenado y se puede terminar el algoritmo. El código en C++ sería el siguiente:
+
+```c++
+#include <iostream>
+using namespace std;
+
+// Función que ordena un arreglo usando el método burbuja
+void burbuja(int arr[], int n) {
+  bool cambio; // Variable que indica si se ha realizado algún cambio
+  do {
+    cambio = false; // Se inicializa la variable en falso
+    for (int i = 0; i < n - 1; i++) { // Se recorre el arreglo desde el principio hasta el penúltimo elemento
+      if (arr[i] > arr[i + 1]) { // Se compara el elemento actual con el siguiente
+        swap(arr[i], arr[i + 1]); // Se intercambian los elementos si están desordenados
+        cambio = true; // Se cambia la variable a verdadero
+      }
+    }
+  } while (cambio); // Se repite el proceso mientras se haya realizado algún cambio
+}
+
+// Función que imprime un arreglo en la consola
+void imprimir(int arr[], int n) {
+  for (int i = 0; i < n; i++) {
+    cout << arr[i] << " ";
+  }
+  cout << endl;
+}
+
+// Función principal
+int main() {
+  int arr[] = {5, 3, 8, 2, 6, 1, 4, 7}; // Arreglo de ejemplo
+  int n = sizeof(arr) / sizeof(arr[0]); // Tamaño del arreglo
+  cout << "Arreglo original: " << endl;
+  imprimir(arr, n); // Se imprime el arreglo original
+  burbuja(arr, n); // Se ordena el arreglo usando el método burbuja
+  cout << "Arreglo ordenado: " << endl;
+  imprimir(arr, n); // Se imprime el arreglo ordenado
+  return 0;
+}
+```
+
+La salida del programa sería la siguiente:
+
+```
+Arreglo original:
+5 3 8 2 6 1 4 7
+Arreglo ordenado:
+1 2 3 4 5 6 7 8
+```
+
+## ¿Qué ventajas y desventajas tiene el método burbuja?
+
+El método burbuja tiene algunas ventajas y desventajas que se deben tener en cuenta a la hora de usarlo. Algunas de ellas son:
+
+- Ventajas:
+  - Es fácil de entender e implementar.
+  - Es estable, es decir, no cambia el orden relativo de los elementos iguales.
+  - Funciona bien para arreglos pequeños o casi ordenados.
+- Desventajas:
+  - Es muy lento e ineficiente para arreglos grandes o muy desordenados.
+  - Tiene una alta complejidad temporal y espacial, ya que requiere muchos ciclos e intercambios.
+  - No es adaptable, es decir, no aprovecha la información previa sobre el orden del arreglo.
+
+## ¿Qué otras variantes o mejoras existen del método burbuja?
+
+Existen algunas variantes o mejoras del método burbuja que intentan optimizar su rendimiento o adaptarlo a diferentes situaciones. Algunas de ellas son:
+
+- Método burbuja bidireccional o de la coctelera: Esta variante alterna el recorrido del arreglo desde el principio hasta el final y desde el final hasta el principio, de forma que los elementos más pequeños y más grandes se van acomodando en cada extremo del arreglo. De esta forma, se reduce el número de iteraciones necesarias para ordenar el arreglo.
+- Método burbuja con contador: Esta variante usa un contador que almacena la posición del último intercambio realizado en cada iteración. De esta forma, se evita recorrer los elementos que ya están ordenados al final del arreglo, reduciendo el número de comparaciones e intercambios.
+- Método burbuja con salto: Esta variante usa un salto que se va reduciendo en cada iteración, de forma que se comparan elementos más distantes entre sí al principio y más cercanos al final. De esta forma, se consigue una mayor movilidad de los elementos, lo que mejora el rendimiento para arreglos muy desordenados.
+
+### ¿Cómo buscar elementos en un arreglo usando C++?
+
+Los arreglos son una de las estructuras de datos más usadas en la programación, ya que permiten almacenar y acceder a varios valores de forma ordenada y eficiente. Sin embargo, muchas veces necesitamos encontrar un elemento específico dentro de un arreglo, ya sea para realizar alguna operación, verificar alguna condición o mostrar algún resultado. Para ello, existen diferentes algoritmos de búsqueda que nos ayudan a localizar el elemento deseado, dependiendo de cómo esté organizado el arreglo. En este blog, te voy a mostrar dos de los algoritmos de búsqueda más comunes y cómo implementarlos en C++: la búsqueda secuencial y la búsqueda binaria.
+
+### ¿Qué es la búsqueda secuencial y cómo funciona?
+
+La búsqueda secuencial es el método más simple para buscar un elemento en un arreglo. Consiste en recorrer el arreglo desde el primer elemento hasta el último y comparar cada elemento con el valor buscado. Si se encuentra una coincidencia, se devuelve la posición del elemento. Si no se encuentra ninguna coincidencia, se devuelve un valor especial que indica que el elemento no está en el arreglo. La búsqueda secuencial se puede usar en cualquier tipo de arreglo, ya sea ordenado o desordenado, pero tiene la desventaja de que es muy lento e ineficiente, ya que en el peor caso tiene que revisar todos los elementos del arreglo. La complejidad temporal de la búsqueda secuencial es O(n), donde n es el número de elementos del arreglo.
+
+### ¿Cómo implementar la búsqueda secuencial en C++?
+
+Para implementar la búsqueda secuencial en C++, se puede usar un ciclo for o un ciclo while que recorra el arreglo desde el inicio hasta el final, comparando cada elemento con el valor buscado y devolviendo la posición si se encuentra una coincidencia. Además, se puede usar una variable booleana que indique si se ha encontrado el elemento o no, para terminar el ciclo antes si es posible. El código en C++ sería el siguiente:
+
+```c++
+#include <iostream>
+using namespace std;
+
+// Función que busca un elemento en un arreglo usando la búsqueda secuencial
+int busquedaSecuencial(int arr[], int n, int valor) {
+  bool encontrado = false; // Variable que indica si se ha encontrado el elemento
+  int pos = -1; // Variable que almacena la posición del elemento, se inicializa en -1
+  for (int i = 0; i < n && !encontrado; i++) { // Se recorre el arreglo desde el inicio hasta el final o hasta encontrar el elemento
+    if (arr[i] == valor) { // Se compara el elemento actual con el valor buscado
+      encontrado = true; // Se cambia la variable a verdadero
+      pos = i; // Se guarda la posición del elemento
+    }
+  }
+  return pos; // Se devuelve la posición del elemento, o -1 si no se encontró
+}
+
+// Función que imprime un arreglo en la consola
+void imprimir(int arr[], int n) {
+  for (int i = 0; i < n; i++) {
+    cout << arr[i] << " ";
+  }
+  cout << endl;
+}
+
+// Función principal
+int main() {
+  int arr[] = {5, 3, 8, 2, 6, 1, 4, 7}; // Arreglo de ejemplo
+  int n = sizeof(arr) / sizeof(arr[0]); // Tamaño del arreglo
+  int valor = 6; // Valor a buscar
+  cout << "Arreglo: " << endl;
+  imprimir(arr, n); // Se imprime el arreglo
+  int pos = busquedaSecuencial(arr, n, valor); // Se busca el valor en el arreglo usando la búsqueda secuencial
+  if (pos != -1) { // Se verifica si se encontró el valor
+    cout << "Se encontró el valor " << valor << " en la posición " << pos << endl; // Se imprime la posición del valor
+  } else {
+    cout << "No se encontró el valor " << valor << " en el arreglo" << endl; // Se imprime un mensaje de error
+  }
+  return 0;
+}
+```
+
+La salida del programa sería la siguiente:
+
+```
+Arreglo:
+5 3 8 2 6 1 4 7
+Se encontró el valor 6 en la posición 4
+```
+
+### ¿Qué es la búsqueda binaria y cómo funciona?
+
+La búsqueda binaria es un método más eficiente para buscar un elemento en un arreglo, pero solo funciona si el arreglo está ordenado. Consiste en dividir el arreglo en dos mitades y comparar el elemento del medio con el valor buscado. Si se encuentra una coincidencia, se devuelve la posición del elemento. Si el valor buscado es menor que el elemento del medio, se busca en la primera mitad del arreglo. Si el valor buscado es mayor que el elemento del medio, se busca en la segunda mitad del arreglo. Se repite el proceso hasta encontrar el elemento o hasta que no queden elementos por revisar. La búsqueda binaria tiene la ventaja de que es muy rápida y eficiente, ya que en cada iteración se descarta la mitad de los elementos del arreglo. La complejidad temporal de la búsqueda binaria es O(log n), donde n es el número de elementos del arreglo.
+
+### ¿Cómo implementar la búsqueda binaria en C++?
+
+Para implementar la búsqueda binaria en C++, se puede usar un ciclo while que mantenga dos variables que indiquen el inicio y el final del rango de búsqueda. En cada iteración, se calcula el elemento del medio y se compara con el valor buscado. Si se encuentra una coincidencia, se devuelve la posición del elemento. Si el valor buscado es menor que el elemento del medio, se actualiza el final del rango de búsqueda al elemento anterior al medio. Si el valor buscado es mayor que el elemento del medio, se actualiza el inicio del rango de búsqueda al elemento siguiente al medio. Se repite el proceso hasta encontrar el elemento o hasta que el inicio sea mayor que el final. El código en C++ sería el siguiente:
+
+```c++
+#include <iostream>
+using namespace std;
+
+// Función que busca un elemento en un arreglo ordenado usando la búsqueda binaria
+int busquedaBinaria(int arr[], int n, int valor) {
+  int inicio = 0; // Variable que indica el inicio del rango de búsqueda, se inicializa en 0
+  int fin = n - 1; // Variable que indica el final del rango de búsqueda, se inicializa en n - 1
+  int medio; // Variable que almacena el elemento del medio
+  while (inicio <= fin) { // Se repite el ciclo mientras el inicio sea menor o igual que el final
+    medio = (inicio + fin) / 2; // Se calcula el elemento del medio
+    if (arr[medio] == valor) { // Se compara el elemento del medio con el valor buscado
+      return medio; // Se devuelve la posición del elemento
+    } else if (arr[medio] > valor) { // Se verifica si el valor buscado es menor que el elemento del medio
+      fin = medio - 1; // Se actualiza el final del rango de búsqueda al elemento anterior al medio
+    } else { // Se verifica si el valor buscado es mayor que el elemento del medio
+      inicio = medio + 1; // Se actualiza el inicio del rango de búsqueda al elemento siguiente al medio
+    }
+  }
+  return -1; // Se devuelve -1 si no se encontró el elemento
+}
+
+// Función que imprime un arreglo en la consola
+void imprimir(int arr[], int n) {
+  for (int i = 0; i < n; i++) {
+    cout << arr[i] << " ";
+  }
+  cout << endl;
+}
+
+// Función principal
+int main() {
+  int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9}; // Arreglo de ejemplo, debe estar ordenado
+  int n = sizeof(arr) / sizeof(arr[0]); // Tamaño del arreglo
+  int valor = 6; // Valor a buscar
+  cout << "Arreglo: " << endl;
+  imprimir(arr, n); // Se imprime el arreglo
+  int pos = busquedaBinaria(arr, n, valor); // Se busca el valor en el arreglo usando la búsqueda binaria
+  if (pos != -1) { // Se verifica si se encontró el valor
+    cout << "Se encontró el valor " << valor << " en la posición " << pos << endl; // Se imprime la posición del valor
+  } else {
+    cout << "No se encontró el valor " << valor << " en el arreglo" << endl; // Se imprime un mensaje de error
+  }
+  return 0;
+}
+```
+
+La salida del programa sería la siguiente:
+
+```
+Arreglo:
+1 2 3 4 5 6 7 8 9
+Se encontró el valor 6 en la posición 5
+```
+
+### ¿Qué son las estructuras en C++ y para qué sirven?
+
+Las estructuras en C++ son una forma de agrupar variables de diferentes tipos en una sola unidad, que se puede manipular como un todo. Las estructuras son muy útiles para representar datos complejos que tienen varios atributos o propiedades, como por ejemplo, una persona, un libro, un coche, etc. En este blog, te voy a explicar qué son las estructuras en C++, cómo se declaran, cómo se accede a sus miembros y cómo se pueden usar en tus programas.
+
+### ¿Cómo se declara una estructura en C++?
+
+Para declarar una estructura en C++, se usa la palabra clave struct, seguida de un nombre opcional que identifica el tipo de la estructura, y luego se abren y cierran llaves, donde se especifican los miembros de la estructura, separados por comas. Cada miembro tiene un nombre y un tipo, que puede ser cualquiera de los tipos primitivos de C++ o incluso otro tipo de estructura. Por ejemplo, la siguiente declaración define una estructura llamada PERSON, que tiene cuatro miembros: age, ss, weight y name.
+
+```c++
+struct PERSON {
+  int age; // Edad en años
+  long ss; // Número de seguridad social
+  float weight; // Peso en kilogramos
+  char name [25]; // Nombre de la persona
+};
+```
+
+Después de declarar una estructura, se puede usar el nombre del tipo para crear variables de ese tipo, como si fuera un tipo primitivo. Por ejemplo, la siguiente declaración crea una variable llamada family_member de tipo PERSON.
+
+```c++
+PERSON family_member;
+```
+
+También se puede declarar una variable al mismo tiempo que se define la estructura, poniendo el nombre de la variable después de la llave de cierre y antes del punto y coma. Por ejemplo, la siguiente declaración crea una variable llamada sister de tipo PERSON, al mismo tiempo que define la estructura PERSON.
+
+```c++
+struct PERSON {
+  int age;
+  long ss;
+  float weight;
+  char name [25];
+} sister;
+```
+
+### ¿Cómo se accede a los miembros de una estructura en C++?
+
+Para acceder a los miembros de una estructura en C++, se usa el operador punto (.), seguido del nombre del miembro. Por ejemplo, la siguiente instrucción asigna el valor 13 al miembro age de la variable sister.
+
+```c++
+sister.age = 13;
+```
+
+También se puede usar el operador punto para leer el valor de un miembro de una estructura. Por ejemplo, la siguiente instrucción imprime el valor del miembro name de la variable sister.
+
+```c++
+cout << sister.name << endl;
+```
+
+### ¿Cómo se pueden usar las estructuras en C++?
+
+Las estructuras en C++ se pueden usar para representar y manipular datos complejos que tienen varios atributos o propiedades. Por ejemplo, se puede usar una estructura para almacenar la información de un libro, como el título, el autor, el género, el precio, etc. Luego, se puede usar un arreglo de estructuras para almacenar una colección de libros, como una biblioteca. También se puede usar una función que reciba una estructura como parámetro o que devuelva una estructura como resultado. Por ejemplo, se puede usar una función que calcule el índice de masa corporal (IMC) de una persona, recibiendo una estructura de tipo PERSON como parámetro y devolviendo un valor de tipo float como resultado.
+
+### ¿Qué son las funciones en C++ y cómo usarlas?
+
+Las funciones en C++ son bloques de código que realizan una tarea específica y pueden devolver un valor. Las funciones nos permiten organizar nuestro programa en partes más pequeñas y reutilizables, evitando la repetición de código y facilitando la depuración y el mantenimiento. En este blog, te voy a mostrar qué son las funciones en C++, cómo se declaran, cómo se llaman, cómo se pasan parámetros y cómo se devuelven valores.
+
+#### ¿Cómo se declara una función en C++?
+
+Para declarar una función en C++, necesitamos especificar cuatro elementos:
+
+- El tipo de retorno, que indica el tipo de valor que devuelve la función, o void si no devuelve nada.
+- El nombre de la función, que es el identificador que usamos para referirnos a ella.
+- La lista de parámetros, que son las variables que recibe la función como entrada, separadas por comas y encerradas entre paréntesis. Cada parámetro tiene un nombre y un tipo, que puede ser cualquiera de los tipos básicos o definidos por el usuario. La lista de parámetros puede estar vacía si la función no recibe ninguna entrada.
+- El cuerpo de la función, que es el conjunto de instrucciones que se ejecutan cuando se llama a la función, delimitado por llaves.
+
+La sintaxis general de una declaración de función es la siguiente:
+
+```c++
+tipo_retorno nombre_funcion(tipo_parametro1 nombre_parametro1, ..., tipo_parametron nombre_parametron) {
+  // Cuerpo de la función
+}
+```
+
+Por ejemplo, la siguiente declaración define una función llamada suma, que recibe dos parámetros de tipo int y devuelve un valor de tipo int, que es la suma de los parámetros.
+
+```c++
+int suma(int a, int b) {
+  return a + b;
+}
+```
+
+### ¿Cómo se llama a una función en C++?
+
+Para llamar a una función en C++, usamos el nombre de la función seguido de la lista de argumentos, que son los valores que se pasan a la función como entrada, separados por comas y encerrados entre paréntesis. Los argumentos deben coincidir en número, tipo y orden con los parámetros de la función. El resultado de la llamada a una función es el valor que devuelve la función, que se puede asignar a una variable, usar como parte de una expresión o ignorar.
+
+La sintaxis general de una llamada a una función es la siguiente:
+
+```c++
+nombre_funcion(argumento1, ..., argumenton);
+```
+
+Por ejemplo, la siguiente llamada a la función suma pasa los valores 3 y 5 como argumentos y asigna el resultado a la variable x.
+
+```c++
+int x = suma(3, 5);
+```
+
+### ¿Cómo se pasan parámetros a una función en C++?
+
+En C++, existen dos formas de pasar parámetros a una función: por valor y por referencia.
+
+- Por valor: Se crea una copia del argumento y se pasa a la función. La función trabaja con la copia y no modifica el argumento original. Esta es la forma predeterminada de pasar parámetros en C++ y se usa cuando queremos que la función solo lea el valor del argumento y no lo cambie.
+- Por referencia: Se pasa la dirección de memoria del argumento y la función accede directamente al argumento original. La función puede modificar el argumento original y los cambios se reflejan fuera de la función. Esta forma de pasar parámetros se indica con el símbolo & después del tipo del parámetro y se usa cuando queremos que la función modifique el valor del argumento o cuando queremos evitar copiar argumentos grandes.
+
+Por ejemplo, la siguiente función intercambia los valores de dos variables usando parámetros por referencia.
+
+```c++
+void intercambiar(int &a, int &b) {
+  int aux = a;
+  a = b;
+  b = aux;
+}
+```
+
+### ¿Cómo se devuelven valores de una función en C++?
+
+En C++, una función puede devolver un valor usando la instrucción return, seguida de una expresión que tenga el mismo tipo que el tipo de retorno de la función. La instrucción return termina la ejecución de la función y devuelve el control al punto donde se llamó a la función. Si la función no devuelve ningún valor, se usa el tipo void como tipo de retorno y se puede omitir la instrucción return al final de la función.
+
+Por ejemplo, la siguiente función devuelve el valor absoluto de un número usando la instrucción return.
+
+```c++
+int valor_absoluto(int x) {
+  if (x < 0) {
+    return -x;
+  } else {
+    return x;
+  }
+}
+```
